@@ -1,0 +1,10 @@
+## Interface: 30000
+## Author: me
+## Title: jTest
+## Notes: does stuff
+## Dependencies:
+
+## LoadManagers: AddonLoader
+## X-LoadOn-Always: delayed
+
+code.lua
