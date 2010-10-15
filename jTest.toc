@@ -2,7 +2,7 @@
 ## Author: me
 ## Title: jTest
 ## Notes: does stuff
-## Dependencies:
+## Dependencies: Grid
 
 ## LoadManagers: AddonLoader
 ## X-LoadOn-Always: delayed
