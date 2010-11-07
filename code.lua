@@ -29,5 +29,11 @@ GridLayout:AddLayout("By Class w/Pets", {
 	[11] = { isPetGroup = true, },
 })
 
--- hmm so the icon comes back when you change tabs
--- what's the event for that?
+-- hide the clock attached to the minimap
+TimeManagerClockButton:Hide()
+
+-- bring back /rl
+SLASH_JTEST1 = '/rl'
+function SlashCmdList.JTEST(msg, editbox)
+	ReloadUI()
+end
