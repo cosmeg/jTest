@@ -48,31 +48,10 @@ function SlashCmdList.JTEST(msg, editbox)
 end
 
 -- hide chat frame tabs
--- TODO show tabs when mousing over the chat frame
+CHAT_FRAME_TAB_SELECTED_NOMOUSE_ALPHA = 0
+CHAT_FRAME_TAB_NORMAL_NOMOUSE_ALPHA = 0
 for i = 1, NUM_CHAT_WINDOWS do
-	_G["ChatFrame"..i.."Tab"]:GetFontString():SetTextColor(1, 0, 0, 0)
-
-	_G["ChatFrame"..i.."TabLeft"]:Hide()
-	_G["ChatFrame"..i.."TabMiddle"]:Hide()
-	_G["ChatFrame"..i.."TabRight"]:Hide()
-
-	_G["ChatFrame"..i.."TabHighlightLeft"]:Hide()
-	_G["ChatFrame"..i.."TabHighlightMiddle"]:Hide()
-	_G["ChatFrame"..i.."TabHighlightRight"]:Hide()
-
-	_G["ChatFrame"..i.."TabSelectedLeft"]:Hide()
-	_G["ChatFrame"..i.."TabSelectedMiddle"]:Hide()
-	_G["ChatFrame"..i.."TabSelectedRight"]:Hide()
-end
-
-FCFTab_UpdateColors = function(self, selected)
-	print(self)
-	if (selected) then
-		self:GetFontString():SetTextColor(1, 1, 1, 0)
-	else
-		self:GetFontString():SetTextColor(1, 1, 1, 0)
-		self.leftSelectedTexture:Hide()
-		self.middleSelectedTexture:Hide()
-		self.rightSelectedTexture:Hide()
-	end
+	local tab = _G["ChatFrame"..i.."Tab"]
+	tab.noMouseAlpha = 0
+	tab:SetAlpha(0)
 end
