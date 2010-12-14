@@ -1,6 +1,15 @@
+-- show all events for debugging
+--[[
+local frame = CreateFrame('Frame')
+frame:RegisterAllEvents()
+frame:SetScript('OnEvent',
+	function(self, event, ...)
+		print(event)
+		print(...)
+	end
+)
+]]
 
---frame:RegisterEvent("GUILD_ROSTER_UPDATE")
---frame:RegisterAllEvents()
 
 local squeenixFixer = CreateFrame("Frame")
 squeenixFixer:RegisterEvent("UNIT_PORTRAIT_UPDATE")
@@ -36,4 +45,34 @@ TimeManagerClockButton:Hide()
 SLASH_JTEST1 = '/rl'
 function SlashCmdList.JTEST(msg, editbox)
 	ReloadUI()
+end
+
+-- hide chat frame tabs
+-- TODO show tabs when mousing over the chat frame
+for i = 1, NUM_CHAT_WINDOWS do
+	_G["ChatFrame"..i.."Tab"]:GetFontString():SetTextColor(1, 0, 0, 0)
+
+	_G["ChatFrame"..i.."TabLeft"]:Hide()
+	_G["ChatFrame"..i.."TabMiddle"]:Hide()
+	_G["ChatFrame"..i.."TabRight"]:Hide()
+
+	_G["ChatFrame"..i.."TabHighlightLeft"]:Hide()
+	_G["ChatFrame"..i.."TabHighlightMiddle"]:Hide()
+	_G["ChatFrame"..i.."TabHighlightRight"]:Hide()
+
+	_G["ChatFrame"..i.."TabSelectedLeft"]:Hide()
+	_G["ChatFrame"..i.."TabSelectedMiddle"]:Hide()
+	_G["ChatFrame"..i.."TabSelectedRight"]:Hide()
+end
+
+FCFTab_UpdateColors = function(self, selected)
+	print(self)
+	if (selected) then
+		self:GetFontString():SetTextColor(1, 1, 1, 0)
+	else
+		self:GetFontString():SetTextColor(1, 1, 1, 0)
+		self.leftSelectedTexture:Hide()
+		self.middleSelectedTexture:Hide()
+		self.rightSelectedTexture:Hide()
+	end
 end
