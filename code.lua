@@ -55,3 +55,6 @@ for i = 1, NUM_CHAT_WINDOWS do
 	tab.noMouseAlpha = 0
 	tab:SetAlpha(0)
 end
+-- make fadeout time same as fadein
+CHAT_TAB_HIDE_DELAY = 0
+CHAT_FRAME_FADE_OUT_TIME = CHAT_FRAME_FADE_TIME
