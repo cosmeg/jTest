@@ -124,5 +124,8 @@ end
 --MiniMapLFGFrame:SetScript("OnShow", function(self) self:Hide() end)
 --MiniMapLFGFrame:Hide()
 
---SQLShowHiddenButton:Hide()
 ]]--
+
+-- hide the sql expander button (which I never use and can't disable)
+SQLShowHiddenButton:Hide()
+SQLShowHiddenButton:SetScript("OnShow", function(self) self:Hide() end)
