@@ -60,71 +60,20 @@ end
 CHAT_TAB_HIDE_DELAY = 0
 CHAT_FRAME_FADE_OUT_TIME = CHAT_FRAME_FADE_TIME
 
---[[
--- ldb launcher for the lfg icon
--- modeled from angry_LFG
--- and http://wowprogramming.com/utils/xmlbrowser/live/FrameXML/Minimap.lua
-local ldb = LibStub:GetLibrary("LibDataBroker-1.1", true)
-local launcher = ldb:NewDataObject("jLFG", {
-	type = "quicklauncher",
-	-- XXX why can't I default this a nil and have it come up when I queue?
-	icon = "Interface\\LFGFrame\\BattlenetWorking0",
-	OnClick = function(clickedframe, button)
-		if button == "RightButton" then 			
-			ToggleDropDownMenu(1, nil, MiniMapLFGFrameDropDown, clickedframe, 0, 0)
-		elseif button == "LeftButton" then 
-			ToggleLFDParentFrame()
-		end
-	end,
-	--OnEnter = MiniMapLFGFrame_OnEnter,
-	-- TODO I *do* want this to be anchored correctly
-	OnEnter = function(self)
-		local mode, submode = GetLFGMode();
-		if ( mode == "queued" ) then
-			LFDSearchStatus:Show();
-		elseif ( mode == "proposal" ) then
-			GameTooltip:SetOwner(self, "ANCHOR_LEFT");
-			GameTooltip:SetText(LOOKING_FOR_DUNGEON);
-			GameTooltip:AddLine(DUNGEON_GROUP_FOUND_TOOLTIP, NORMAL_FONT_COLOR.r, NORMAL_FONT_COLOR.g, NORMAL_FONT_COLOR.b, 1);
-			GameTooltip:AddLine(" ");
-			GameTooltip:AddLine(CLICK_HERE_FOR_MORE_INFO, NORMAL_FONT_COLOR.r, NORMAL_FONT_COLOR.g, NORMAL_FONT_COLOR.b, 1);
-			GameTooltip:Show();
-		elseif ( mode == "rolecheck" ) then
-			GameTooltip:SetOwner(self, "ANCHOR_LEFT");
-			GameTooltip:SetText(LOOKING_FOR_DUNGEON);
-			GameTooltip:AddLine(ROLE_CHECK_IN_PROGRESS_TOOLTIP, NORMAL_FONT_COLOR.r, NORMAL_FONT_COLOR.g, NORMAL_FONT_COLOR.b, 1);
-			GameTooltip:Show();
-		elseif ( mode == "listed" ) then
-			GameTooltip:SetOwner(self, "ANCHOR_LEFT");
-			GameTooltip:SetText(LOOKING_FOR_RAID);
-			GameTooltip:AddLine(YOU_ARE_LISTED_IN_LFR, NORMAL_FONT_COLOR.r, NORMAL_FONT_COLOR.g, NORMAL_FONT_COLOR.b, 1);
-			GameTooltip:Show();
-		elseif ( mode == "lfgparty" ) then
-			GameTooltip:SetOwner(self, "ANCHOR_LEFT");
-			GameTooltip:SetText(LOOKING_FOR_DUNGEON);
-			GameTooltip:AddLine(YOU_ARE_IN_DUNGEON_GROUP, NORMAL_FONT_COLOR.r, NORMAL_FONT_COLOR.g, NORMAL_FONT_COLOR.b, 1);
-			GameTooltip:Show();
-		end
-	end,
-	OnLeave = MiniMapLFGFrame_OnLeave
-})
 
-MiniMapLFG_UpdateIsShown = function()
-	--print "MiniMapLFG_UpdateIsShown"
-	local mode, submode = GetLFGMode()
-	if (mode) then
-		--print "in q"
-		launcher.icon = "Interface\\LFGFrame\\BattlenetWorking0"
-	else
-		launcher.icon = nil
-	end
-end
+-- move and style lfg icon
+MiniMapLFGFrameBorder:Hide()
+LFDSearchStatus:SetClampedToScreen(true)
 
--- XXX hiding this seems to interfere with my addon
---MiniMapLFGFrame:SetScript("OnShow", function(self) self:Hide() end)
---MiniMapLFGFrame:Hide()
+-- uncomment to enable dragging
+--MiniMapLFGFrame:SetMovable(true)
+--MiniMapLFGFrame:RegisterForDrag("LeftButton")
+--MiniMapLFGFrame:SetScript("OnDragStart", MiniMapLFGFrame.StartMoving)
+--MiniMapLFGFrame:SetScript("OnDragStop", MiniMapLFGFrame.StopMovingOrSizing)
 
-]]--
+MiniMapLFGFrame:ClearAllPoints()
+MiniMapLFGFrame:SetPoint("BOTTOMLEFT", Minimap, "BOTTOMLEFT", 0, 0)
+
 
 -- hide the sql expander button (which I never use and can't disable)
 SQLShowHiddenButton:Hide()
