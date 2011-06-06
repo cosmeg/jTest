@@ -72,7 +72,7 @@ LFDSearchStatus:SetClampedToScreen(true)
 --MiniMapLFGFrame:SetScript("OnDragStop", MiniMapLFGFrame.StopMovingOrSizing)
 
 MiniMapLFGFrame:ClearAllPoints()
-MiniMapLFGFrame:SetPoint("BOTTOMLEFT", Minimap, "BOTTOMLEFT", 0, 0)
+MiniMapLFGFrame:SetPoint("BOTTOMLEFT", Minimap, "BOTTOMLEFT", -5, -5)
 
 
 -- hide the sql expander button (which I never use and can't disable)
