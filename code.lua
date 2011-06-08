@@ -76,8 +76,8 @@ MiniMapLFGFrame:SetPoint("BOTTOMLEFT", Minimap, "BOTTOMLEFT", -5, -5)
 
 
 -- hide the sql expander button (which I never use and can't disable)
+SQLShowHiddenButton.Show = SQLShowHiddenButton.Hide
 SQLShowHiddenButton:Hide()
-SQLShowHiddenButton:SetScript("OnShow", function(self) self:Hide() end)
 
 
 -- hide 'N' on the minimap
