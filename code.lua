@@ -61,18 +61,15 @@ CHAT_TAB_HIDE_DELAY = 0
 CHAT_FRAME_FADE_OUT_TIME = CHAT_FRAME_FADE_TIME
 
 
--- move and style lfg icon
+-- move and style lfg and pvp icon
 MiniMapLFGFrameBorder:Hide()
 LFDSearchStatus:SetClampedToScreen(true)
-
--- uncomment to enable dragging
---MiniMapLFGFrame:SetMovable(true)
---MiniMapLFGFrame:RegisterForDrag("LeftButton")
---MiniMapLFGFrame:SetScript("OnDragStart", MiniMapLFGFrame.StartMoving)
---MiniMapLFGFrame:SetScript("OnDragStop", MiniMapLFGFrame.StopMovingOrSizing)
-
 MiniMapLFGFrame:ClearAllPoints()
 MiniMapLFGFrame:SetPoint("BOTTOMLEFT", Minimap, "BOTTOMLEFT", -5, -5)
+
+MiniMapBattlefieldFrame:ClearAllPoints()
+MiniMapBattlefieldFrame:SetPoint("BOTTOMRIGHT", Minimap, "BOTTOMRIGHT", 5, -5)
+MiniMapBattlefieldBorder:Hide()
 
 
 -- hide the sql expander button (which I never use and can't disable)
