@@ -79,3 +79,9 @@ SQLShowHiddenButton:Hide()
 
 -- hide 'N' on the minimap
 MinimapNorthTag:Hide()
+
+
+-- hide the chat window minimization buttons
+for i = 1, 9 do
+	_G['ChatFrame' .. i .. 'ButtonFrameMinimizeButton']:Hide()
+end
