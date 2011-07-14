@@ -22,6 +22,7 @@ squeenixFixer:SetScript("OnEvent",
 -- disable /w stickyness
 ChatTypeInfo.WHISPER.sticky = 0
 
+--
 -- restore old grid "By Class" layout
 -- TODO make this work with grid disabled
 local GridLayout = Grid:GetModule("GridLayout")
@@ -39,8 +40,13 @@ GridLayout:AddLayout("By Class w/Pets", {
 	[11] = { isPetGroup = true, },
 })
 
+-- fixes the problem where grid is hidden on login until I switch layouts
+GridLayout:ReloadLayout()
+
+
 -- hide the clock attached to the minimap
 TimeManagerClockButton:Hide()
+
 
 -- bring back /rl
 SLASH_JTEST1 = '/rl'
