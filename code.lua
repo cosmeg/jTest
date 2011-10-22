@@ -91,3 +91,25 @@ MinimapNorthTag:Hide()
 for i = 1, 9 do
 	_G['ChatFrame' .. i .. 'ButtonFrameMinimizeButton']:Hide()
 end
+
+
+-- clear lfg chat window when entering an instance
+-- also scroll down when changing zones (is this a good time?)
+-- TODO find the proper window, this works for caapi but probably not others
+local LFG_CHAT_FRAME_NUMBER = 5
+local DEFAULT_FADE_TIME = ChatFrame1:GetTimeVisible()
+
+local lfgChatFrame = _G["ChatFrame"..LFG_CHAT_FRAME_NUMBER]
+local lfgChatFrameFader = CreateFrame("Frame")
+
+lfgChatFrameFader:RegisterEvent("ZONE_CHANGED_NEW_AREA")
+lfgChatFrameFader:SetScript("OnEvent",
+	function(self, event, ...)
+		lfgChatFrame:ScrollToBottom()
+		if IsInInstance() then
+			lfgChatFrame:SetTimeVisible(1)
+		else
+			lfgChatFrame:SetTimeVisible(DEFAULT_FADE_TIME)
+		end
+	end
+)
