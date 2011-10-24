@@ -118,7 +118,8 @@ lfgChatFrameFader:SetScript("OnEvent",
 	end
 )
 
--- TODO have the status be visible in some way (so I notice it)
+-- TODO have the scroll status be visible in some way (so I notice it)
 --      hook the default and show that icon?
---      AtBottom()
---      is there a chat scroll event?
+--      is there a chat scroll event? ==> no
+--        well, not a "global" event. ScrollUp()
+--        I could hook the scroll call (?)
