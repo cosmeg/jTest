@@ -96,7 +96,6 @@ end
 -- clear lfg chat window when entering an instance
 -- also scroll down when changing zones (is this a good time?)
 local LFG_CHAT_FRAME_NUMBER = 5
-local DEFAULT_FADE_TIME = ChatFrame1:GetTimeVisible()
 
 for i = 1, 9 do
 	if _G["ChatFrame" .. i .. "Tab"]:GetText() == "lfg" then
@@ -110,12 +109,16 @@ local lfgChatFrameFader = CreateFrame("Frame")
 lfgChatFrameFader:RegisterEvent("ZONE_CHANGED_NEW_AREA")
 lfgChatFrameFader:SetScript("OnEvent",
 	function(self, event, ...)
-		lfgChatFrame:ScrollToBottom()
+		if not lfgChatFrame:AtBottom() then
+			lfgChatFrame:ScrollToBottom()
+		end
 		if IsInInstance() then
-			lfgChatFrame:SetTimeVisible(1)
-			-- TODO clear it here after a delay
-		else
-			lfgChatFrame:SetTimeVisible(DEFAULT_FADE_TIME)
+			lfgChatFrame:Clear()
 		end
 	end
 )
+
+-- TODO have the status be visible in some way (so I notice it)
+--      hook the default and show that icon?
+--      AtBottom()
+--      is there a chat scroll event?
