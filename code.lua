@@ -123,3 +123,40 @@ lfgChatFrameFader:SetScript("OnEvent",
 --      is there a chat scroll event? ==> no
 --        well, not a "global" event. ScrollUp()
 --        I could hook the scroll call (?)
+
+
+-- finding rogues (from cladhaire)
+local frame = CreateFrame("Frame")
+frame:RegisterEvent("UPDATE_MOUSEOVER_UNIT")
+frame:RegisterEvent("CRITERIA_UPDATE")
+
+local status = {}
+_G["hestatus"] = status
+
+for i = 1, 8 do
+	local race, _, complete = GetAchievementCriteriaInfo(3559, i)
+	status[race] = complete
+end
+
+frame:SetScript("OnEvent", function(self, event, ...)
+	if event == "CRITERIA_UPDATE" then
+		for i = 1, 8 do
+			local race, _, complete = GetAchievementCriteriaInfo(3559, i)
+			status[race] = complete
+		end
+	elseif event == "UPDATE_MOUSEOVER_UNIT" then
+		if not UnitIsPlayer("mouseover") then return end
+		local race = UnitRace("mouseover")
+		local class = UnitClass("mouseover")
+
+		if class ~= "Rogue" then return end
+		if race == "Worgen" then return end
+
+		local key = race .. " " .. class
+
+		if not status[key] then
+			local msg = string.format("Quick, shoot %s, they're a %s", UnitName("mouseover"), key)
+			RaidNotice_AddMessage(RaidBossEmoteFrame, msg, ChatTypeInfo["RAID_WARNING"])
+		end
+	end
+end)
