@@ -151,6 +151,7 @@ frame:SetScript("OnEvent", function(self, event, ...)
 
 		if class ~= "Rogue" then return end
 		if race == "Worgen" then return end
+		if race == "Goblin" then return end
 
 		local key = race .. " " .. class
 
