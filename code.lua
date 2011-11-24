@@ -125,7 +125,8 @@ lfgChatFrameFader:SetScript("OnEvent",
 --        I could hook the scroll call (?)
 
 
--- finding rogues (from cladhaire)
+-- finding rogues for pilgim's bounty (from cladhaire)
+--[[
 local frame = CreateFrame("Frame")
 frame:RegisterEvent("UPDATE_MOUSEOVER_UNIT")
 frame:RegisterEvent("CRITERIA_UPDATE")
@@ -161,3 +162,4 @@ frame:SetScript("OnEvent", function(self, event, ...)
 		end
 	end
 end)
+--]]
