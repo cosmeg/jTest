@@ -68,8 +68,9 @@ CHAT_FRAME_FADE_OUT_TIME = CHAT_FRAME_FADE_TIME
 
 
 -- move and style lfg and pvp icon
+-- XXX not working in 4.2
 MiniMapLFGFrameBorder:Hide()
-LFDSearchStatus:SetClampedToScreen(true)
+LFGSearchStatus:SetClampedToScreen(true)
 MiniMapLFGFrame:ClearAllPoints()
 MiniMapLFGFrame:SetPoint("BOTTOMLEFT", Minimap, "BOTTOMLEFT", -5, -5)
 
