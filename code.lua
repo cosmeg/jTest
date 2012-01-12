@@ -68,7 +68,6 @@ CHAT_FRAME_FADE_OUT_TIME = CHAT_FRAME_FADE_TIME
 
 
 -- move and style lfg and pvp icon
--- XXX not working in 4.2
 MiniMapLFGFrameBorder:Hide()
 LFGSearchStatus:SetClampedToScreen(true)
 MiniMapLFGFrame:ClearAllPoints()
@@ -106,7 +105,6 @@ end
 
 local lfgChatFrame = _G["ChatFrame" .. LFG_CHAT_FRAME_NUMBER]
 local lfgChatFrameFader = CreateFrame("Frame")
-
 lfgChatFrameFader:RegisterEvent("ZONE_CHANGED_NEW_AREA")
 lfgChatFrameFader:SetScript("OnEvent",
 	function(self, event, ...)
@@ -119,11 +117,12 @@ lfgChatFrameFader:SetScript("OnEvent",
 	end
 )
 
--- TODO have the scroll status be visible in some way (so I notice it)
---      hook the default and show that icon?
---      is there a chat scroll event? ==> no
---        well, not a "global" event. ScrollUp()
---        I could hook the scroll call (?)
+
+-- /clear to clear the lfg chat frame
+SLASH_JTEST_CLEAR1 = '/clear'
+function SlashCmdList.JTEST_CLEAR(msg, editbox)
+	lfgChatFrame:Clear()
+end
 
 
 -- finding rogues for pilgim's bounty (from cladhaire)
