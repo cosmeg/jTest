@@ -82,7 +82,7 @@ MiniMapBattlefieldBorder:Hide()
 -- TODO better icon available? w/o black background
 MiniMapMailBorder:Hide()
 MiniMapMailFrame:ClearAllPoints()
-MiniMapMailFrame:SetPoint("TOPRIGHT", Minimap, "TOPRIGHT", 0, 0)
+MiniMapMailFrame:SetPoint("TOPRIGHT", Minimap, "TOPRIGHT", 10, 8)
 MiniMapMailIcon:SetTexCoord(0.07, 0.93, 0.07, 0.93)
 
 
