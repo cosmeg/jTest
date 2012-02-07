@@ -78,6 +78,14 @@ MiniMapBattlefieldFrame:SetPoint("BOTTOMRIGHT", Minimap, "BOTTOMRIGHT", 5, -5)
 MiniMapBattlefieldBorder:Hide()
 
 
+-- same for mail icon
+-- TODO better icon available? w/o black background
+MiniMapMailBorder:Hide()
+MiniMapMailFrame:ClearAllPoints()
+MiniMapMailFrame:SetPoint("TOPRIGHT", Minimap, "TOPRIGHT", 0, 0)
+MiniMapMailIcon:SetTexCoord(0.07, 0.93, 0.07, 0.93)
+
+
 -- hide the sql expander button (which I never use and can't disable)
 SQLShowHiddenButton.Show = SQLShowHiddenButton.Hide
 SQLShowHiddenButton:Hide()
