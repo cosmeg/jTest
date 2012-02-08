@@ -130,6 +130,17 @@ lfgChatFrameFader:SetScript("OnEvent",
 SLASH_JTEST_CLEAR1 = '/clear'
 function SlashCmdList.JTEST_CLEAR(msg, editbox)
 	lfgChatFrame:Clear()
+	--[[
+	print('hi')
+	local t = lfgChatFrame:GetTimeVisible()
+	print(t)
+	lfgChatFrame:SetTimeVisible(0)
+	-- XXX this doesn't seem to be working
+	lfgChatFrame:ScrollToBottom()
+	--ChatFrame3:SetTimeVisible(120)
+	-- if I set this back right away, it won't finish the fade
+	--lfgChatFrame:SetTimeVisible(t)
+	--]]
 end
 
 
