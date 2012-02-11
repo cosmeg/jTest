@@ -126,6 +126,10 @@ lfgChatFrameFader:SetScript("OnEvent",
 )
 
 
+-- fade out the lfg (and loot) frame quicker
+lfgChatFrame:SetTimeVisible(15)
+
+
 -- /clear to clear the lfg chat frame
 SLASH_JTEST_CLEAR1 = '/clear'
 function SlashCmdList.JTEST_CLEAR(msg, editbox)
