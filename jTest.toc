@@ -2,7 +2,7 @@
 ## Author: me
 ## Title: jTest
 ## Notes: does stuff
-## Dependencies: Grid
+## OptionalDeps: Grid, Recount
 
 ## LoadManagers: AddonLoader
 ## X-LoadOn-Always: delayed

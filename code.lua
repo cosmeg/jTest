@@ -199,3 +199,13 @@ function SlashCmdList.JTEST_RAIDINFO(msg, editbox)
 		end
 	end
 end
+
+
+-- clear recount when logging out, to speed it up
+local recountClearer = CreateFrame("Frame")
+recountClearer:RegisterEvent("PLAYER_LOGOUT")
+recountClearer:SetScript("OnEvent",
+	function(self, event, ...)
+		Recount:ResetData()
+	end
+)
