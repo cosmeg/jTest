@@ -67,15 +67,11 @@ CHAT_TAB_HIDE_DELAY = 0
 CHAT_FRAME_FADE_OUT_TIME = CHAT_FRAME_FADE_TIME
 
 
--- move and style lfg and pvp icon
-MiniMapLFGFrameBorder:Hide()
-LFGSearchStatus:SetClampedToScreen(true)
-MiniMapLFGFrame:ClearAllPoints()
-MiniMapLFGFrame:SetPoint("BOTTOMLEFT", Minimap, "BOTTOMLEFT", -5, -5)
-
-MiniMapBattlefieldFrame:ClearAllPoints()
-MiniMapBattlefieldFrame:SetPoint("BOTTOMRIGHT", Minimap, "BOTTOMRIGHT", 5, -5)
-MiniMapBattlefieldBorder:Hide()
+-- move and style lfg and pvp icon (now merged)
+QueueStatusMinimapButtonBorder:Hide()
+QueueStatusFrame:SetClampedToScreen(true)
+QueueStatusMinimapButton:ClearAllPoints()
+QueueStatusMinimapButton:SetPoint("BOTTOMLEFT", Minimap, "BOTTOMLEFT", -5, -5)
 
 
 -- same for mail icon
