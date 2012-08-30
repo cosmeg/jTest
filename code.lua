@@ -198,6 +198,8 @@ end
 
 
 -- clear recount when logging out, to speed it up
+-- XXX no longer using recount
+--[[
 local recountClearer = CreateFrame("Frame")
 recountClearer:RegisterEvent("PLAYER_LOGOUT")
 recountClearer:SetScript("OnEvent",
@@ -205,3 +207,4 @@ recountClearer:SetScript("OnEvent",
 		Recount:ResetData()
 	end
 )
+--]]
