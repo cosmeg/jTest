@@ -208,3 +208,49 @@ recountClearer:SetScript("OnEvent",
 	end
 )
 --]]
+
+
+-- some basic introspection (will this work?). uncomment to use
+--[[
+function pad(n)
+	local s = ""
+	for i = 1, n do
+		s = s .. "  "
+	end
+	return s
+end
+
+-- Dridzt @ http://www.wowinterface.com/forums/showthread.php?t=32011
+-- modified
+function GetChildrenTree(frame, depth)
+	local frameName = frame:GetName() or "NONAME"
+	-- TODO scope this function?
+	print(pad(depth) .. frameName .. "(" .. type(frame) .. "):")
+	if frame.GetTexture then
+		print(" texture: " .. frame:GetTexture())
+	end
+	if frameName == "NONAME" then
+		for k,v in pairs(frame) do
+			print(k, v)
+		end
+	end
+  if frame:GetChildren() then
+    for _, child in pairs({ frame:GetChildren() }) do
+			GetChildrenTree(child, depth + 1);
+    end
+  end
+end
+
+GetChildrenTree(Minimap, 0)
+-- so there are some unnamed tables here
+--GetChildrenTree(MinimapBackdrop) -- this is the "stuff" (buttons, etc) around the map
+--GetChildrenTree(MiniMapTracking)
+
+--notes
+-- where did I see the word "blob"?
+-- /run Minimap:SetArchBlobRingScalar( 0 ); Minimap:SetQuestBlobRingScalar( 0 );
+-- ahahahaa  this works
+-- so how could I have found this?
+-- list methods?
+-- http://wowprogramming.com/docs/widgets/Minimap -- it's here, but not documented
+--]]
