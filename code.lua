@@ -247,10 +247,16 @@ GetChildrenTree(Minimap, 0)
 --GetChildrenTree(MiniMapTracking)
 
 --notes
--- where did I see the word "blob"?
+-- where did I see the word "blob"? I forget...
+-- http://www.wowinterface.com/downloads/info19883-_MiniBlobs.html#comments
 -- /run Minimap:SetArchBlobRingScalar( 0 ); Minimap:SetQuestBlobRingScalar( 0 );
 -- ahahahaa  this works
 -- so how could I have found this?
 -- list methods?
 -- http://wowprogramming.com/docs/widgets/Minimap -- it's here, but not documented
 --]]
+
+
+-- hide the minimap blob ring (so that's what it's called!)
+Minimap:SetArchBlobRingScalar(0)
+Minimap:SetQuestBlobRingScalar(0)
