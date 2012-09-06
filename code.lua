@@ -267,3 +267,18 @@ Minimap:SetQuestBlobRingScalar(0)
 -- move the stock buff frame to the right
 BuffFrame:ClearAllPoints()
 BuffFrame:SetPoint("TOPRIGHT", UIParent, "TOPRIGHT", -13, -13)
+
+
+-- summon a random pet
+-- http://www.wowinterface.com/forums/showthread.php?t=43896
+-- interesting trivia - /randompet is taken and gives the same error as my old macro!
+SLASH_JTEST_JRANDOMPET1 = '/jrandompet'
+function SlashCmdList.JTEST_JRANDOMPET(msg, editbox)
+	C_PetJournal.ClearSearchFilter()
+	C_PetJournal.SetFlagFilter(LE_PET_JOURNAL_FLAG_COLLECTED, true) -- displays pets we do have
+	C_PetJournal.SetFlagFilter(LE_PET_JOURNAL_FLAG_NOT_COLLECTED, false) -- ignores pets we don't have
+	local numPets = C_PetJournal.GetNumPets(false)
+	local petIndex = math.random(numPets)
+	local petID, _ = C_PetJournal.GetPetInfoByIndex(petIndex, false)
+	C_PetJournal.SummonPetByID(petID)
+end
