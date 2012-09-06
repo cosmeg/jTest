@@ -82,9 +82,11 @@ MiniMapMailFrame:SetPoint("TOPRIGHT", Minimap, "TOPRIGHT", 10, 8)
 MiniMapMailIcon:SetTexCoord(0.07, 0.93, 0.07, 0.93)
 
 
+--[[
 -- hide the sql expander button (which I never use and can't disable)
 SQLShowHiddenButton.Show = SQLShowHiddenButton.Hide
 SQLShowHiddenButton:Hide()
+]]--
 
 
 -- hide 'N' on the minimap
@@ -260,3 +262,8 @@ GetChildrenTree(Minimap, 0)
 -- hide the minimap blob ring (so that's what it's called!)
 Minimap:SetArchBlobRingScalar(0)
 Minimap:SetQuestBlobRingScalar(0)
+
+
+-- move the stock buff frame to the right
+BuffFrame:ClearAllPoints()
+BuffFrame:SetPoint("TOPRIGHT", UIParent, "TOPRIGHT", -13, -13)
