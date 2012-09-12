@@ -264,9 +264,11 @@ Minimap:SetArchBlobRingScalar(0)
 Minimap:SetQuestBlobRingScalar(0)
 
 
+--[[
 -- move the stock buff frame to the right
 BuffFrame:ClearAllPoints()
 BuffFrame:SetPoint("TOPRIGHT", UIParent, "TOPRIGHT", -13, -13)
+]]--
 
 
 -- summon a random pet
