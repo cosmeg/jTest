@@ -1,4 +1,5 @@
 -- show all events for debugging
+-- XXX for posterity. use /eventtrace  http://www.wowpedia.org/MACRO_eventtrace
 --[[
 local frame = CreateFrame('Frame')
 frame:RegisterAllEvents()
