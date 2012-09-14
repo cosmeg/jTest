@@ -213,9 +213,8 @@ recountClearer:SetScript("OnEvent",
 --]]
 
 
--- some basic introspection (will this work?). uncomment to use
---[[
-function pad(n)
+-- some basic introspection
+local function pad(n)
 	local s = ""
 	for i = 1, n do
 		s = s .. "  "
@@ -227,7 +226,6 @@ end
 -- modified
 function GetChildrenTree(frame, depth)
 	local frameName = frame:GetName() or "NONAME"
-	-- TODO scope this function?
 	print(pad(depth) .. frameName .. "(" .. type(frame) .. "):")
 	if frame.GetTexture then
 		print(" texture: " .. frame:GetTexture())
@@ -244,7 +242,8 @@ function GetChildrenTree(frame, depth)
   end
 end
 
-GetChildrenTree(Minimap, 0)
+--GetChildrenTree(Minimap, 0)
+--GetChildrenTree(ConsolidatedBuffs, 0)
 -- so there are some unnamed tables here
 --GetChildrenTree(MinimapBackdrop) -- this is the "stuff" (buttons, etc) around the map
 --GetChildrenTree(MiniMapTracking)
@@ -257,19 +256,11 @@ GetChildrenTree(Minimap, 0)
 -- so how could I have found this?
 -- list methods?
 -- http://wowprogramming.com/docs/widgets/Minimap -- it's here, but not documented
---]]
 
 
 -- hide the minimap blob ring (so that's what it's called!)
 Minimap:SetArchBlobRingScalar(0)
 Minimap:SetQuestBlobRingScalar(0)
-
-
---[[
--- move the stock buff frame to the right
-BuffFrame:ClearAllPoints()
-BuffFrame:SetPoint("TOPRIGHT", UIParent, "TOPRIGHT", -13, -13)
-]]--
 
 
 -- summon a random pet
@@ -284,4 +275,11 @@ function SlashCmdList.JTEST_JRANDOMPET(msg, editbox)
 	local petIndex = math.random(numPets)
 	local petID, _ = C_PetJournal.GetPetInfoByIndex(petIndex, false)
 	C_PetJournal.SummonPetByID(petID)
+end
+
+
+-- shortcut
+SLASH_JTEST_FS1 = '/fs'
+function SlashCmdList.JTEST_FS(msg, editbox)
+  SlashCmdList.FRAMESTACK()
 end
