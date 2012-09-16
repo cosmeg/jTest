@@ -225,16 +225,18 @@ end
 -- Dridzt @ http://www.wowinterface.com/forums/showthread.php?t=32011
 -- modified
 function GetChildrenTree(frame, depth)
+  if not frame then return end
+
 	local frameName = frame:GetName() or "NONAME"
 	print(pad(depth) .. frameName .. "(" .. type(frame) .. "):")
 	if frame.GetTexture then
 		print(" texture: " .. frame:GetTexture())
 	end
-	if frameName == "NONAME" then
-		for k,v in pairs(frame) do
-			print(k, v)
-		end
-	end
+	--if frameName == "NONAME" then  -- XXX wtf is this?
+  for k,v in pairs(frame) do
+    print(k, v)
+  end
+	--end
   if frame:GetChildren() then
     for _, child in pairs({ frame:GetChildren() }) do
 			GetChildrenTree(child, depth + 1);
