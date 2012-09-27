@@ -33,12 +33,13 @@ GridLayout:AddLayout("By Class w/Pets", {
 	[3] = { groupFilter = "ROGUE", },
 	[4] = { groupFilter = "PALADIN", },
 	[5] = { groupFilter = "DRUID", },
-	[6] = { groupFilter = "SHAMAN", },
-	[7] = { groupFilter = "PRIEST", },
-	[8] = { groupFilter = "MAGE", },
-	[9] = { groupFilter = "WARLOCK", },
-	[10] = { groupFilter = "HUNTER", },
-	[11] = { isPetGroup = true, },
+	[6] = { groupFilter = "MONK", },
+	[7] = { groupFilter = "SHAMAN", },
+	[8] = { groupFilter = "PRIEST", },
+	[9] = { groupFilter = "MAGE", },
+	[10] = { groupFilter = "WARLOCK", },
+	[11] = { groupFilter = "HUNTER", },
+	[12] = { isPetGroup = true, },
 })
 
 -- fixes the problem where grid is hidden on login until I switch layouts
