@@ -262,10 +262,6 @@ end
 
 
 -- hide the minimap blob ring (so that's what it's called!)
--- XXX it's possible this is causing taint(?)
--- map in combat
--- WatchFrame_Update() from jQuest?
--- http://www.wowinterface.com/forums/showthread.php?t=32859
 Minimap:SetArchBlobRingScalar(0)
 Minimap:SetQuestBlobRingScalar(0)
 
