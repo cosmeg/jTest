@@ -286,3 +286,7 @@ SLASH_JTEST_FS1 = '/fs'
 function SlashCmdList.JTEST_FS(msg, editbox)
   SlashCmdList.FRAMESTACK()
 end
+
+
+-- key binds so I don't need to use bars for this stuff
+SetBindingSpell(",", "Fishing")
