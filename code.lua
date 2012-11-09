@@ -23,7 +23,8 @@ squeenixFixer:SetScript("OnEvent",
 -
 -- disable /w stickyness
 ChatTypeInfo.WHISPER.sticky = 0
--- TODO b.net whispers too
+ChatTypeInfo.BN_WHISPER.sticky = 0
+ChatTypeInfo.BN_CONVERSATION.sticky = 0
 
 
 -- restore old grid "By Class" layout
