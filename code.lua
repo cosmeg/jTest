@@ -20,7 +20,7 @@ squeenixFixer:SetScript("OnEvent",
   end
 )
 
--
+
 -- disable /w stickyness
 ChatTypeInfo.WHISPER.sticky = 0
 ChatTypeInfo.BN_WHISPER.sticky = 0
@@ -257,3 +257,16 @@ end
 
 -- key binds so I don't need to use bars for this stuff
 SetBindingSpell(",", "Fishing")
+
+
+-- Create a binding to use ExtraActionButton1 but on the focus target.
+local jExtraActionButton = CreateFrame("Button", "jExtraActionButton",
+                                       UIParent, "SecureActionButtonTemplate")
+jExtraActionButton:SetAttribute("type", "action")
+jExtraActionButton:SetAttribute("action", 169)  -- ExtraActionButton1
+jExtraActionButton:SetAttribute("unit", "focus")
+if GetMacroIndexByName("jEAB") == 0 then
+  -- TODO use the ? icon
+  CreateMacro("jEAB", 1, "/click jExtraActionButton", nil)
+end
+SetBindingMacro("SHIFT-Q", "jEAB")
