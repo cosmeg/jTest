@@ -1,5 +1,5 @@
 -- show all events for debugging
--- XXX for posterity. use /eventtrace  http://www.wowpedia.org/MACRO_eventtrace
+-- NOTE for posterity. use /eventtrace  http://www.wowpedia.org/MACRO_eventtrace
 --[[
 local frame = CreateFrame('Frame')
 frame:RegisterAllEvents()
@@ -20,10 +20,12 @@ squeenixFixer:SetScript("OnEvent",
 	end
 )
 
+-
 -- disable /w stickyness
 ChatTypeInfo.WHISPER.sticky = 0
+-- TODO b.net whispers too
 
---
+
 -- restore old grid "By Class" layout
 -- TODO make this work with grid disabled
 local GridLayout = Grid:GetModule("GridLayout")
@@ -56,6 +58,7 @@ function SlashCmdList.JTEST(msg, editbox)
 	ReloadUI()
 end
 
+
 -- hide chat frame tabs
 CHAT_FRAME_TAB_SELECTED_NOMOUSE_ALPHA = 0
 CHAT_FRAME_TAB_NORMAL_NOMOUSE_ALPHA = 0
@@ -75,20 +78,12 @@ QueueStatusFrame:SetClampedToScreen(true)
 QueueStatusMinimapButton:ClearAllPoints()
 QueueStatusMinimapButton:SetPoint("BOTTOMLEFT", Minimap, "BOTTOMLEFT", -5, -5)
 
-
 -- same for mail icon
 -- TODO better icon available? w/o black background
 MiniMapMailBorder:Hide()
 MiniMapMailFrame:ClearAllPoints()
 MiniMapMailFrame:SetPoint("TOPRIGHT", Minimap, "TOPRIGHT", 10, 8)
 MiniMapMailIcon:SetTexCoord(0.07, 0.93, 0.07, 0.93)
-
-
---[[
--- hide the sql expander button (which I never use and can't disable)
-SQLShowHiddenButton.Show = SQLShowHiddenButton.Hide
-SQLShowHiddenButton:Hide()
-]]--
 
 
 -- hide 'N' on the minimap
@@ -125,23 +120,20 @@ lfgChatFrameFader:SetScript("OnEvent",
 	end
 )
 
-
 -- fade out the lfg (and loot) frame quicker
 lfgChatFrame:SetTimeVisible(15)
-
 
 -- /clear to clear the lfg chat frame
 SLASH_JTEST_CLEAR1 = '/clear'
 function SlashCmdList.JTEST_CLEAR(msg, editbox)
 	lfgChatFrame:Clear()
+  -- It would be neat if the chat would fade out instead of suddenly, but I
+  -- couldn't get this to work.
 	--[[
-	print('hi')
 	local t = lfgChatFrame:GetTimeVisible()
 	print(t)
 	lfgChatFrame:SetTimeVisible(0)
-	-- XXX this doesn't seem to be working
 	lfgChatFrame:ScrollToBottom()
-	--ChatFrame3:SetTimeVisible(120)
 	-- if I set this back right away, it won't finish the fade
 	--lfgChatFrame:SetTimeVisible(t)
 	--]]
@@ -201,19 +193,6 @@ function SlashCmdList.JTEST_RAIDINFO(msg, editbox)
 end
 
 
--- clear recount when logging out, to speed it up
--- XXX no longer using recount
---[[
-local recountClearer = CreateFrame("Frame")
-recountClearer:RegisterEvent("PLAYER_LOGOUT")
-recountClearer:SetScript("OnEvent",
-	function(self, event, ...)
-		Recount:ResetData()
-	end
-)
---]]
-
-
 -- some basic introspection
 local function pad(n)
 	local s = ""
@@ -245,21 +224,6 @@ function GetChildrenTree(frame, depth)
   end
 end
 
---GetChildrenTree(Minimap, 0)
---GetChildrenTree(ConsolidatedBuffs, 0)
--- so there are some unnamed tables here
---GetChildrenTree(MinimapBackdrop) -- this is the "stuff" (buttons, etc) around the map
---GetChildrenTree(MiniMapTracking)
-
---notes
--- where did I see the word "blob"? I forget...
--- http://www.wowinterface.com/downloads/info19883-_MiniBlobs.html#comments
--- /run Minimap:SetArchBlobRingScalar( 0 ); Minimap:SetQuestBlobRingScalar( 0 );
--- ahahahaa  this works
--- so how could I have found this?
--- list methods?
--- http://wowprogramming.com/docs/widgets/Minimap -- it's here, but not documented
-
 
 -- hide the minimap blob ring (so that's what it's called!)
 Minimap:SetArchBlobRingScalar(0)
@@ -272,8 +236,10 @@ Minimap:SetQuestBlobRingScalar(0)
 SLASH_JTEST_JRANDOMPET1 = '/jrandompet'
 function SlashCmdList.JTEST_JRANDOMPET(msg, editbox)
 	C_PetJournal.ClearSearchFilter()
-	C_PetJournal.SetFlagFilter(LE_PET_JOURNAL_FLAG_COLLECTED, true) -- displays pets we do have
-	C_PetJournal.SetFlagFilter(LE_PET_JOURNAL_FLAG_NOT_COLLECTED, false) -- ignores pets we don't have
+  -- displays pets we do have:
+	C_PetJournal.SetFlagFilter(LE_PET_JOURNAL_FLAG_COLLECTED, true)
+  -- ignores pets we don't have:
+	C_PetJournal.SetFlagFilter(LE_PET_JOURNAL_FLAG_NOT_COLLECTED, false)
 	local numPets = C_PetJournal.GetNumPets(false)
 	local petIndex = math.random(numPets)
 	local petID, _ = C_PetJournal.GetPetInfoByIndex(petIndex, false)
