@@ -266,7 +266,6 @@ jExtraActionButton:SetAttribute("type", "action")
 jExtraActionButton:SetAttribute("action", 169)  -- ExtraActionButton1
 jExtraActionButton:SetAttribute("unit", "focus")
 if GetMacroIndexByName("jEAB") == 0 then
-  -- TODO use the ? icon
-  CreateMacro("jEAB", 1, "/click jExtraActionButton", nil)
+  CreateMacro("jEAB", "INV_MISC_QUESTIONMARK", "/click jExtraActionButton", nil)
 end
 SetBindingMacro("SHIFT-Q", "jEAB")
