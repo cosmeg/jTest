@@ -269,3 +269,15 @@ if GetMacroIndexByName("jEAB") == 0 then
   CreateMacro("jEAB", "INV_MISC_QUESTIONMARK", "/click jExtraActionButton", nil)
 end
 SetBindingMacro("SHIFT-Q", "jEAB")
+
+
+-- make quest poi buttons semi-transparent
+local function FadePOIButton(parentName, buttonType, buttonIndex, questId)
+  -- from blizz code
+  local buttonName = "poi"..parentName..buttonType.."_"..buttonIndex;
+  _G[buttonName]:SetAlpha(0.5)
+  if QUEST_POI_SWAP_BUTTONS[parentName] then
+    QUEST_POI_SWAP_BUTTONS[parentName]:SetAlpha(0.5)
+  end
+end
+hooksecurefunc("QuestPOI_DisplayButton", FadePOIButton)
