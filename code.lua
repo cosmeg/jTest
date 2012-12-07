@@ -306,3 +306,9 @@ function SlashCmdList.JTEST_JT(msg, editbox)
     SetTracking(index, not active)
   end
 end
+
+
+-- say something in chat when the dungeon queue pops
+local queueAlerter = CreateFrame("Frame")
+queueAlerter:SetScript("OnEvent", function(self, ...) print(...) end)
+queueAlerter:RegisterEvent("LFG_PROPOSAL_SHOW")
