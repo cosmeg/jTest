@@ -312,3 +312,5 @@ end
 local queueAlerter = CreateFrame("Frame")
 queueAlerter:SetScript("OnEvent", function(self, ...) print(...) end)
 queueAlerter:RegisterEvent("LFG_PROPOSAL_SHOW")
+-- pet battles too
+queueAlerter:RegisterEvent("PET_BATTLE_QUEUE_PROPOSE_MATCH")
