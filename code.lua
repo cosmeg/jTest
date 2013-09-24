@@ -181,19 +181,6 @@ end)
 --]]
 
 
--- /ri command that emulates /raidinfo now that it's borked
-SLASH_JTEST_RAIDINFO1 = '/ri'
-function SlashCmdList.JTEST_RAIDINFO(msg, editbox)
-  for i = 1, GetNumSavedInstances() do
-    local instanceName, instanceID, instanceReset, instanceDifficulty, locked, extended, instanceIDMostSig, isRaid, maxPlayers, difficultyName, maxBosses, defeatedBosses = GetSavedInstanceInfo(i)
-    if locked and isRaid then
-      print(GetSavedInstanceChatLink(i) ..
-            " (" .. defeatedBosses .. "/" .. maxBosses .. ")")
-    end
-  end
-end
-
-
 -- some basic introspection
 local function pad(n)
   local s = ""
