@@ -313,5 +313,5 @@ SUFUnitfocus:RegisterForClicks("LeftButtonUp")
 -- http://us.battle.net/wow/en/forum/topic/10388639018
 -- this may break changing talents:
 -- C_StorePublic.IsDisabledByParentalControls = function () return false end
--- this will only dismiss the dialog, the error will still be show in bugsack
+-- this will only dismiss the dialog, the error will still be shown in bugsack
 UIParent:HookScript("OnEvent", function(s, e, a1, a2) if e:find("ACTION_FORBIDDEN") and ((a1 or "")..(a2 or "")):find("IsDisabledByParentalControls") then StaticPopup_Hide(e) end; end)
