@@ -305,3 +305,13 @@ queueAlerter:RegisterEvent("PET_BATTLE_QUEUE_PROPOSE_MATCH")
 
 -- disable right-click on SUF's focus frame
 SUFUnitfocus:RegisterForClicks("LeftButtonUp")
+
+
+-- workaround for taint issue introduced in 5.4.1
+-- TODO remove once this is fixed by blizzard
+-- http://us.battle.net/wow/en/forum/topic/10388659115
+-- http://us.battle.net/wow/en/forum/topic/10388639018
+-- this may break changing talents:
+-- C_StorePublic.IsDisabledByParentalControls = function () return false end
+-- this will only dismiss the dialog, the error will still be show in bugsack
+UIParent:HookScript("OnEvent", function(s, e, a1, a2) if e:find("ACTION_FORBIDDEN") and ((a1 or "")..(a2 or "")):find("IsDisabledByParentalControls") then StaticPopup_Hide(e) end; end)
