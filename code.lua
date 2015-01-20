@@ -21,12 +21,6 @@ squeenixFixer:SetScript("OnEvent",
 )
 
 
--- disable /w stickyness
-ChatTypeInfo.WHISPER.sticky = 0
-ChatTypeInfo.BN_WHISPER.sticky = 0
-ChatTypeInfo.BN_CONVERSATION.sticky = 0
-
-
 -- restore old grid "By Class" layout
 -- TODO make this work with grid disabled
 local GridLayout = Grid:GetModule("GridLayout")
@@ -60,19 +54,6 @@ function SlashCmdList.JTEST(msg, editbox)
 end
 
 
--- hide chat frame tabs
-CHAT_FRAME_TAB_SELECTED_NOMOUSE_ALPHA = 0
-CHAT_FRAME_TAB_NORMAL_NOMOUSE_ALPHA = 0
-for i = 1, NUM_CHAT_WINDOWS do
-  local tab = _G["ChatFrame"..i.."Tab"]
-  tab.noMouseAlpha = 0
-  tab:SetAlpha(0)
-end
--- make fadeout time same as fadein
-CHAT_TAB_HIDE_DELAY = 0
-CHAT_FRAME_FADE_OUT_TIME = CHAT_FRAME_FADE_TIME
-
-
 -- move and style lfg and pvp icon (now merged)
 QueueStatusMinimapButtonBorder:Hide()
 QueueStatusFrame:SetClampedToScreen(true)
@@ -89,12 +70,6 @@ MiniMapMailIcon:SetTexCoord(0.07, 0.93, 0.07, 0.93)
 
 -- hide 'N' on the minimap
 MinimapNorthTag:Hide()
-
-
--- hide the chat window minimization buttons
-for i = 1, 9 do
-  _G['ChatFrame' .. i .. 'ButtonFrameMinimizeButton']:Hide()
-end
 
 
 -- clear lfg chat window when entering an instance
