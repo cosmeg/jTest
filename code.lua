@@ -43,10 +43,6 @@ GridLayout:AddLayout("By Class w/Pets", {
 GridLayout:ReloadLayout()
 
 
--- hide the clock attached to the minimap
-TimeManagerClockButton:Hide()
-
-
 -- bring back /rl
 SLASH_JTEST1 = '/rl'
 function SlashCmdList.JTEST(msg, editbox)
@@ -66,10 +62,6 @@ MiniMapMailBorder:Hide()
 MiniMapMailFrame:ClearAllPoints()
 MiniMapMailFrame:SetPoint("TOPRIGHT", Minimap, "TOPRIGHT", 10, 8)
 MiniMapMailIcon:SetTexCoord(0.07, 0.93, 0.07, 0.93)
-
-
--- hide 'N' on the minimap
-MinimapNorthTag:Hide()
 
 
 -- clear lfg chat window when entering an instance
@@ -186,11 +178,6 @@ function GetChildrenTree(frame, depth)
     end
   end
 end
-
-
--- hide the minimap blob ring (so that's what it's called!)
-Minimap:SetArchBlobRingScalar(0)
-Minimap:SetQuestBlobRingScalar(0)
 
 
 -- summon a random pet
