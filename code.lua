@@ -1,23 +1,24 @@
----- restore old grid "By Class" layout
----- TODO make this work with grid disabled
---local GridLayout = Grid:GetModule("GridLayout")
---GridLayout:AddLayout("By Class w/Pets", {
---  [1] = { groupFilter = "WARRIOR", },
---  [2] = { groupFilter = "DEATHKNIGHT", },
---  [3] = { groupFilter = "ROGUE", },
---  [4] = { groupFilter = "PALADIN", },
---  [5] = { groupFilter = "DRUID", },
---  [6] = { groupFilter = "MONK", },
---  [7] = { groupFilter = "SHAMAN", },
---  [8] = { groupFilter = "PRIEST", },
---  [9] = { groupFilter = "MAGE", },
---  [10] = { groupFilter = "WARLOCK", },
---  [11] = { groupFilter = "HUNTER", },
---  [12] = { isPetGroup = true, },
---})
---
----- fixes the problem where grid is hidden on login until I switch layouts
---GridLayout:ReloadLayout()
+if Grid then
+  -- restore old grid "By Class" layout
+  local GridLayout = Grid:GetModule("GridLayout")
+  GridLayout:AddLayout("By Class w/Pets", {
+    [1] = { groupFilter = "WARRIOR", },
+    [2] = { groupFilter = "DEATHKNIGHT", },
+    [3] = { groupFilter = "ROGUE", },
+    [4] = { groupFilter = "PALADIN", },
+    [5] = { groupFilter = "DRUID", },
+    [6] = { groupFilter = "MONK", },
+    [7] = { groupFilter = "SHAMAN", },
+    [8] = { groupFilter = "PRIEST", },
+    [9] = { groupFilter = "MAGE", },
+    [10] = { groupFilter = "WARLOCK", },
+    [11] = { groupFilter = "HUNTER", },
+    [12] = { isPetGroup = true, },
+  })
+
+  -- fixes the problem where grid is hidden on login until I switch layouts
+  GridLayout:ReloadLayout()
+end
 
 
 -- bring back /rl
