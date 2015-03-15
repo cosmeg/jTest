@@ -75,7 +75,7 @@ end
 -- /framestack shortcut
 SLASH_JTEST_FS1 = '/fs'
 function SlashCmdList.JTEST_FS(msg, editbox)
-  SlashCmdList.FRAMESTACK()
+  SlashCmdList.FRAMESTACK(msg)
 end
 
 
