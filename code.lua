@@ -78,6 +78,12 @@ function SlashCmdList.JTEST_FS(msg, editbox)
   SlashCmdList.FRAMESTACK(msg)
 end
 
+-- /eventtrace shortcut
+SLASH_JTEST_FS1 = '/et'
+function SlashCmdList.JTEST_FS(msg, editbox)
+  SlashCmdList.EVENTTRACE(msg)
+end
+
 
 -- key binds so I don't need to use bars for this stuff
 SetBindingSpell(",", "Fishing")
