@@ -79,8 +79,8 @@ function SlashCmdList.JTEST_FS(msg, editbox)
 end
 
 -- /eventtrace shortcut
-SLASH_JTEST_FS1 = '/et'
-function SlashCmdList.JTEST_FS(msg, editbox)
+SLASH_JTEST_ET1 = '/et'
+function SlashCmdList.JTEST_ET(msg, editbox)
   SlashCmdList.EVENTTRACE(msg)
 end
 
@@ -121,4 +121,20 @@ SUFUnitfocus:RegisterForClicks("LeftButtonUp")
 SLASH_JTESTBS1 = '/bs'
 function SlashCmdList.JTESTBS(msg, editbox)
   BugSack:OpenSack()
+end
+-- TODO command to clear bugs
+
+
+SLASH_JTEST_GARRISON1 = '/gar'
+SLASH_JTEST_GARRISON2 = '/garrison'
+function SlashCmdList.JTEST_GARRISON(msg, editbox)
+  GarrisonLandingPage_Toggle()
+end
+
+SLASH_JTEST_MISSIONS1 = '/miss'
+SLASH_JTEST_MISSIONS2 = '/missions'
+function SlashCmdList.JTEST_MISSIONS(msg, editbox)
+  for i, m in ipairs(C_Garrison.GetInProgressMissions()) do
+    print(m.name.." - "..m.timeLeft)
+  end
 end
