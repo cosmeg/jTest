@@ -134,7 +134,10 @@ end
 SLASH_JTEST_MISSIONS1 = '/miss'
 SLASH_JTEST_MISSIONS2 = '/missions'
 function SlashCmdList.JTEST_MISSIONS(msg, editbox)
-  for i, m in ipairs(C_Garrison.GetInProgressMissions()) do
+  local missions = {}
+  -- TODO this might not get shiypard stuff
+  C_Garrison.GetInProgressMissions(missions, LE_FOLLOWER_TYPE_GARRISON_6_0)
+  for i, m in ipairs(missions) do
     print(m.name.." - "..m.timeLeft)
   end
 end
