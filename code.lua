@@ -134,10 +134,12 @@ end
 SLASH_JTEST_MISSIONS1 = '/miss'
 SLASH_JTEST_MISSIONS2 = '/missions'
 function SlashCmdList.JTEST_MISSIONS(msg, editbox)
-  local missions = {}
-  -- TODO this might not get shiypard stuff
-  C_Garrison.GetInProgressMissions(missions, LE_FOLLOWER_TYPE_GARRISON_6_0)
-  for i, m in ipairs(missions) do
-    print(m.name.." - "..m.timeLeft)
+  -- TODO can I find the max somewhere?
+  for followerType = 1,10 do
+    local missions = {}
+    C_Garrison.GetInProgressMissions(missions, followerType)
+    for i, m in ipairs(missions) do
+      print(m.name.." - "..m.timeLeft)
+    end
   end
 end
