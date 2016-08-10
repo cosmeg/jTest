@@ -4,16 +4,17 @@ if Grid then
   GridLayout:AddLayout("By Class w/Pets", {
     [1] = { groupFilter = "WARRIOR", },
     [2] = { groupFilter = "DEATHKNIGHT", },
-    [3] = { groupFilter = "ROGUE", },
-    [4] = { groupFilter = "PALADIN", },
-    [5] = { groupFilter = "DRUID", },
-    [6] = { groupFilter = "MONK", },
-    [7] = { groupFilter = "SHAMAN", },
-    [8] = { groupFilter = "PRIEST", },
-    [9] = { groupFilter = "MAGE", },
-    [10] = { groupFilter = "WARLOCK", },
-    [11] = { groupFilter = "HUNTER", },
-    [12] = { isPetGroup = true, },
+    [3] = { groupFilter = "DEMONHUNTER", },
+    [4] = { groupFilter = "ROGUE", },
+    [5] = { groupFilter = "PALADIN", },
+    [6] = { groupFilter = "DRUID", },
+    [7] = { groupFilter = "MONK", },
+    [8] = { groupFilter = "SHAMAN", },
+    [9] = { groupFilter = "PRIEST", },
+    [10] = { groupFilter = "MAGE", },
+    [11] = { groupFilter = "WARLOCK", },
+    [12] = { groupFilter = "HUNTER", },
+    [13] = { isPetGroup = true, },
   })
 
   -- fixes the problem where grid is hidden on login until I switch layouts
