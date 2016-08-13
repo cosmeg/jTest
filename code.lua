@@ -144,3 +144,7 @@ function SlashCmdList.JTEST_MISSIONS(msg, editbox)
     end
   end
 end
+
+
+-- apparently this is reset at each login
+SetCVar("cameraDistanceMaxFactor", 2.6)
