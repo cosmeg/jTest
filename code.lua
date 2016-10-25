@@ -146,8 +146,7 @@ function SlashCmdList.JTEST_MISSIONS(msg, editbox)
 end
 
 
--- apparently this is reset at each login
-SetCVar("cameraDistanceMaxFactor", 2.6)
+SetCVar("cameraDistanceMaxZoomFactor", 2.6)
 
 
 -- disable titles in player names (ui option was removed)
