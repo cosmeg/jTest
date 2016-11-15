@@ -151,3 +151,11 @@ SetCVar("cameraDistanceMaxZoomFactor", 2.6)
 
 -- disable titles in player names (ui option was removed)
 SetCVar("UnitNamePlayerPVPTitle", 0)
+
+
+SLASH_JTEST_LOCALTIME1 = "/lt"
+SLASH_JTEST_LOCALTIME2 = "/localtime"
+function SlashCmdList.JTEST_LOCALTIME(msg, editbox)
+  -- TODO AM/PM
+  print(date())
+end
