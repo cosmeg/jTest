@@ -159,3 +159,12 @@ function SlashCmdList.JTEST_LOCALTIME(msg, editbox)
   -- TODO AM/PM
   print(date())
 end
+
+
+-- move extra action button to the right
+do
+  local eab = ExtraActionButton1
+  local point, relativeTo, relativePoint, xOffset, yOffset = eab:GetPoint(1)
+  eab:ClearAllPoints()
+  eab:SetPoint(point, relativeTo, relativePoint, xOffset + 300, yOffset - 50)
+end
