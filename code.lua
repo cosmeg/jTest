@@ -136,7 +136,8 @@ SLASH_JTEST_MISSIONS1 = '/miss'
 SLASH_JTEST_MISSIONS2 = '/missions'
 function SlashCmdList.JTEST_MISSIONS(msg, editbox)
   -- TODO can I find the max somewhere?
-  for followerType = 1,10 do
+  -- LE_FOLLOWER_TYPE_GARRISON_8_0
+  for followerType = 1,30 do
     local missions = {}
     C_Garrison.GetInProgressMissions(missions, followerType)
     for i, m in ipairs(missions) do
