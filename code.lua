@@ -169,3 +169,13 @@ do
   eab:ClearAllPoints()
   eab:SetPoint(point, relativeTo, relativePoint, xOffset + 300, yOffset - 50)
 end
+
+
+do
+  local ppba = PlayerPowerBarAlt
+  local point, relativeTo, relativePoint, xOffset, yOffset = ppba:GetPoint(1)
+  ppba:ClearAllPoints()
+  ppba:SetPoint(point, relativeTo, relativePoint, xOffset + 250, yOffset - 75)
+  ppba:SetMovable(true)
+  ppba:SetUserPlaced(true)
+end
